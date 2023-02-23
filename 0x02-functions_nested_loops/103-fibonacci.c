@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
- * main - finds the sum of all even numbers 
+ * main - finds the sum of all even numbers
  * within 4000000 numbers
  *
- * Returns: 0 success
+ * Return: 0 success
  */
 int main(void)
 {
@@ -15,7 +15,7 @@ int main(void)
 
 	while (current <= 4000000)
 	{
-                if (current % 2 == 0)
+		if (current % 2 == 0)
 		{
 			sum_even += current;
 		}
