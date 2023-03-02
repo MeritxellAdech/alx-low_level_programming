@@ -2,23 +2,22 @@
 
 /**
  * _strcat -  concatenates two string
- * @dest: the second string
- * @src: the first string
+ * @dest: the first string
+ * @src: the second string
  * Return: success string
  */
 char *_strcat(char *dest, char *src)
 {
-	int w_len = 0, i;
+	int s_len = 0, d_len = 0;
 
-	if (src[w_len] == 0)
+	while (dest[d_len] != '\0')
+		d_len++;
+	while (src[s_len] != '\0')
 	{
-		dest += ' ';
-		w_len++;
+		dest[d_len] = src[s_len];
+		s_len++;
+		d_len++;
 	}
-	while (src[w_len] != '\0')
-	{
-		dest += src[w_len - 1];
-		w_len++;
-	}
+	dest[d_len] = '\0';
 	return (dest);
 }
