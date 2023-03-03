@@ -18,13 +18,13 @@ char *leet(char *s)
 	{
 		if (s[w_len] == 'a' || s[w_len] == 'A')
 			s[w_len] = '4';
-		if (s[w_len] == 'e' || s[w_len] == 'E')
+		else if (s[w_len] == 'e' || s[w_len] == 'E')
 			s[w_len] = '3';
-		if (s[w_len] == 'o' || s[w_len] == 'O')
+		else if (s[w_len] == 'o' || s[w_len] == 'O')
 			s[w_len] = '0';
-		if (s[w_len] == 't' || s[w_len] == 'T')
+		else if (s[w_len] == 't' || s[w_len] == 'T')
 			s[w_len] = '7';
-		if (s[w_len] == 'l' || s[w_len] == 'L')
+		else if (s[w_len] == 'l' || s[w_len] == 'L')
 			s[w_len] = '1';
 		w_len++;
 	}
