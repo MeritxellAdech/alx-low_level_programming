@@ -8,27 +8,25 @@
 char *cap_string(char *s)
 {
 	int index = 0;
-	char delimiters[] = ",;.!?\"(){}\n \t";
-	unsigned int del_index;
-
-	while (s[index] != '\0')
+	
+	while (str[index])
 	{
-		del_index = 0;
-		while (del_index < (sizeof(delimiters) / sizeof(char)) - 1)
-		{
-			if (s[index] == delimiters[del_index])
-			{
-				if (s[index] == '\t')
-					s[index] = ' ';
-				if (s[index + 1] >= 'a' && s[index + 1] <= 'z')
-				{
-					s[index + 1] = s[index + 1] - 32;
-					index++;
-					break;
-				}
-			}
-			del_index++;
-		}
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
+		if (str[index - 1] == ' ' ||
+		str[index - 1] == '\n' ||
+		str[index - 1] == '\t' ||
+		str[index - 1] == ';' ||
+		str[index - 1] == '!' ||
+		str[index - 1] == '?' ||
+		str[index - 1] == '"' ||
+		str[index - 1] == ',' ||
+		str[index - 1] == '(' ||
+		str[index - 1] == ')' ||
+		str[index - 1] == '{' ||
+		str[index - 1] == '}' ||
+		index == 0)
+			str[index] -= 32;
 		index++;
 	}
 
