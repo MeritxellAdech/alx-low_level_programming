@@ -12,20 +12,23 @@
  */
 char *leet(char *s)
 {
-	int w_len = 0;
+	char letters[] = "aeotl";
+	char digits[] = "43071";
+	int size = sizeof(digits);
+	int w_len = 0, i;
 
 	while (s[w_len] != '\0')
 	{
-		if (s[w_len] == 'a' || s[w_len] == 'A')
-			s[w_len] = '4';
-		else if (s[w_len] == 'e' || s[w_len] == 'E')
-			s[w_len] = '3';
-		else if (s[w_len] == 'o' || s[w_len] == 'O')
-			s[w_len] = '0';
-		else if (s[w_len] == 't' || s[w_len] == 'T')
-			s[w_len] = '7';
-		else if (s[w_len] == 'l' || s[w_len] == 'L')
-			s[w_len] = '1';
+		i = 0;
+		while (i < size)
+		{
+			if (s[w_len] == letters[i] || (s[w_len] + 32) == letters[i])
+			{
+				s[w_len] = digits[i];
+				break;
+			}
+			i++;
+		}
 		w_len++;
 	}
 	return (s);
