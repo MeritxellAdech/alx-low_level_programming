@@ -9,38 +9,24 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int length;
-	unsigned int index = 0, lookup_index, i, j;
-	unsigned int size = 0;
+	int i = 0, j = 0;
 
-	while (accept[size] != '\0')
+	while (s[j] != '\0')
 	{
-		size++;
-	}
-	while (s[index] != '\0')
-	{
-		j = 0;
-		if (s[index] != accept[j])
+		i = 0;
+		while (accept[i] != '\0')
 		{
-			index++;
-			continue;
-		}
-		lookup_index = 0;
-		i = index;
-		while (lookup_index < size)
-		{
-			if (s[i] == accept[j])
+			if (s[j] == accept[i])
 			{
-				length++;
+				break;
 			}
-			lookup_index++;
 			i++;
-			j++;
 		}
-		if (length == size)
+		if (accept[i] == '\0')
+		{
 			break;
-		length = 0;
-		index++;
+		}
+		j++;
 	}
-	return (length);
+	return (j);
 }
