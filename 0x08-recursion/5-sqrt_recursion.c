@@ -16,10 +16,18 @@ int find_sqrt(int n, int i)
 	{
 		return (i);
 	}
+	else if (i * i < n)
+	{
+		return (find_sqrt(n, i + 1));
+	}
+	else
+	{
+		return (-1);
+	}
 }
 
 /**
- * _sqrt_recursion - returns the square root 
+ * _sqrt_recursion - returns the square root
  * for the given number
  *
  * @n: the given number
