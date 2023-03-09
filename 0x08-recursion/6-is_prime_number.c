@@ -10,16 +10,16 @@
  */
 int is_prime_number(int n)
 {
-	int factors = n, prime;
+	int prime, factors = n;
 
 	if (n < 4)
 	{
-		return 1;
+		return (1);
 	}
 	if (factors <= n)
 	{
 		prime = n / is_prime_number(factors - 1);
-		return 1;
+		return (1);
 	}
-	return 0;
+	return (0);
 }
