@@ -9,17 +9,25 @@
  */
 char *rot13(char *str)
 {
-	int index = 0;
+	char *chars = "abcdefghijklmnopqrstuvwxyz";
+	int str_index = 0, char_index = 0;
+	int table[] = {13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13,
+	-13, -13, -13, -13, -13, -13, -13, -13, -13, -13, -13, -13, -13};
 
-	while (str[index])
+	while (str[str_index])
 	{
-		if ((str[index] >= 97 && str[index] <= 109) ||
-			(str[index] >= 65 && str[index] <= 77))
-			str[index] += 13;
-		else if ((str[index] >= 110 && str[index] <= 122) ||
-			(str[index] >= 78 && str[index] <= 90))
-			str[index] -= 13;
-		index++;
+		char_index = 0;
+		while (char_index < 27)
+		{
+			if (str[str_index] == chars[char_index] ||
+			(str[str_index] == chars[char_index] - 32))
+			{
+				str[str_index] = str[str_index] + table[char_index];
+				break;
+			}
+			char_index++;
+		}
+		str_index++;
 	}
 
 	return (str);
