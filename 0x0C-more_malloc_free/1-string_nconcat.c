@@ -9,7 +9,7 @@
  */
 unsigned int _strlen(char *s)
 {
-	int i = 0;
+	unsigned int i = 0;
 
 	if (s == NULL)
 		return (0);
@@ -22,9 +22,9 @@ unsigned int _strlen(char *s)
  * _strcount - returns a number of given characters
  * from a string
  *
- * @s: string
- * @n: the number of characters from s
- * Return: the number of characters
+ * @s: the given string
+ * @n: the number of characters from @s
+ * Return: the @n number of characters from @s
  */
 unsigned int _strcount(char *s, unsigned int n)
 {
@@ -47,11 +47,11 @@ unsigned int _strcount(char *s, unsigned int n)
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *str;
-	unsigned int len, i = 0, j = 0;
+	char *str = NULL;
+	unsigned int len = 0, i = 0, j = 0;
 
 	len = _strlen(s1) + _strcount(s2, n);
-	str = malloc(len + 1);
+	str = malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
 
@@ -71,5 +71,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		}
 		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }
