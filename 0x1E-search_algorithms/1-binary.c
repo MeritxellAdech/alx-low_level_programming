@@ -46,19 +46,21 @@ int helper(int *array, size_t start, size_t end, int value)
 	print_array(array, start, end);
 
 	/* Calculating the mid index*/
-	mid_idx = (start + end - 1) / 2;
+	mid_idx = (start + end) / 2;
 
-	/* When index is not found*/
-	if (start == end)
-	{
-		return (-1);
-	}
 	/* Check if index matches the target value*/
 	if (array[mid_idx] == value)
 	{
 		return (mid_idx);
 	}
-	else if (value > array[mid_idx])
+
+	/* When index is not found*/
+	if (start >= end)
+	{
+		return (-1);
+	}
+
+	if (value > array[mid_idx])
 	{
 		/* When target value is greater than mid_idx value*/
 		start = mid_idx + 1;
@@ -68,7 +70,7 @@ int helper(int *array, size_t start, size_t end, int value)
 	{
 		/* When target value is less than mid_idx value*/
 		end = mid_idx - 1;
-		return (helper(array, 0, end, value));
+		return (helper(array, start, end, value));
 	}
 }
 
@@ -83,14 +85,9 @@ int helper(int *array, size_t start, size_t end, int value)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	int index = 0;
-
-	index = helper(array, 0, size - 1, value);
-
-	if (index != -1)
+	if (!array || size == 0)
 	{
-		return (index);
+		return (-1);
 	}
-
-	return (-1);
+	return (helper(array, 0, size - 1, value));
 }
